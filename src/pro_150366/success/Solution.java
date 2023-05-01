@@ -123,3 +123,45 @@ class Matrix {
     }
 
 }
+
+class Test {
+    public static void main(String[] args) {
+
+        Map<String, Integer> map = new HashMap<>();
+
+        map.put("zz", 12);
+        map.put("b", 12);
+        map.put("a", 10);
+
+        Set<String> strings = map.keySet();
+        List<String> keys = new ArrayList<>();
+        keys.addAll(map.keySet());
+
+        keys.sort(Comparator.comparing(s -> s));
+
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+
+        List<Test2> test2s = new ArrayList<>();
+        test2s.add(new Test2("z"));
+        test2s.add(new Test2("ab"));
+        test2s.add(new Test2("c12"));
+
+
+        test2s.sort(Comparator.comparing((Test2 te) -> te.name));
+
+        for (Test2 t : test2s) {
+            System.out.println(t.name);
+        }
+    }
+
+    static class Test2 {
+        public Test2(String name) {
+            this.name = name;
+        }
+
+        String name;
+    }
+}
