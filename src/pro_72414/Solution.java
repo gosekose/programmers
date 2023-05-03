@@ -74,24 +74,64 @@ class Solution {
     }
 }
 
+class Test {
+
+    public static void main(String[] args) {
+
+        int[] point = {4, 8};
+        int[] arr = new int[10];
+
+        for (int i = point[0]; i <= point[1]; i++) {
+            arr[i] += 1;
+        }
+
+        int sum = 0;
+
+        for (int i : arr) {
+            sum += i;
+        }
+
+        System.out.println("sum = " + sum);
+
+
+        int[] arr2 = new int[10];
+
+        arr2[point[0]] += 1;
+        arr2[point[1] + 1] -= 1;
+
+        int sum2 = 0;
+
+        for (int i = 1; i < arr2.length; i++) {
+            arr2[i] = arr2[i] + arr2[i - 1];
+        }
+
+        for (int i = 0; i < arr2.length; i++) {
+            sum2 += arr2[i];
+        }
+
+        System.out.println("sum2 = " + sum2);
+
+
+
+    }
+}
+
+
+
 //
-// ----- 
+// -----
 // -------
 // --------
 //
 
 // 구간별 time을 배열로 저장
 // 구간 길이로 각 내부의 합을 구한 후 ======== 한칸씩 옮기며 99 * 60 * 60 + 59 * 60 + 59  약 36만
-// logs 30만 * 36만 62억 
+// logs 30만 * 36만 62억
 // 구간별로 플레이타임을 나눈다면 ?
 // 출발시간 별로 구간을나눔
 // 1 - 21
 // 누적합 개념
-// 1 0 1  0 0 0  -1 0 0  0  0   
-// 1 1 2  2 2 2   1 1 1  1  0 
+// 1 0 1  0 0 0  -1 0 0  0  0
+// 1 1 2  2 2 2   1 1 1  1  0
 
 // 누적합 --> 시작 1  마지막 인덱스 +1 에 -1 만약 끝이라면 x
-
-
-// 7 8 11 12 18 24
-        //+1    // -1
