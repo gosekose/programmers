@@ -1,4 +1,4 @@
-package sw13460;
+package sw_13460;
 
 import java.util.*;
 import java.io.*;
@@ -72,7 +72,7 @@ class Board {
             if (map[red.x][red.y] == 'O') {
                 answer = red.step;
                 return;
-            }    
+            }
             
             for (int i = 0; i < 4; i++) {
                 int bx = blue.x; // 반드시 blue부터 실행
@@ -97,16 +97,14 @@ class Board {
                 }
 
                 if (isBlueCheck) continue;
-                
+
                 int rx = red.x;
                 int ry = red.y;
                 
                 while(true) {
                     rx += DX[i];
                     ry += DY[i];
-                    
-                    // 'O'을 만나도 종료하지 않고 break만 하는 이유는 'O'으로 이동 이전에 Blue 구슬에 의해 이동이 막힐 수도 있으므로
-                    // 곧바로 종료하지 않고 break 처리 및 방문 처리 후 for 문 이전에 작성한 체킹으로 가능한 경우인지 판단
+
                     if (map[rx][ry] == 'O') break;
                     else if (map[rx][ry] == '#') {
                         rx -= DX[i];
@@ -114,7 +112,7 @@ class Board {
                         break;
                     }
                 }
-                
+
                 // 두개의 위치가 같다면 
                 // 서로 다른 큐에 의해 구슬의 앞 뒤 관계를 고려하지 않고 이동하였으므로
                 // 두 구슬의 우선순위에 따라 배치를 다르게 해야 함
