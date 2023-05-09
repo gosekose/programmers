@@ -93,4 +93,5 @@ class ChickenDistance {
             this.col = col;
         }
     }
+
 }
