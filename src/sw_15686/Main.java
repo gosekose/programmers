@@ -28,7 +28,6 @@ public class Main {
 class ChickenDistance {
     int n; // 정사각형 행렬
     int m; // m개의 선택된 치킨집
-    int[][] map;
     boolean[] open; // 열려있는 집
     int minDistance = Integer.MAX_VALUE; // 최소 치킨 거리
     List<Point> chickens = new ArrayList<>(); // 치킨집 좌표
@@ -37,12 +36,9 @@ class ChickenDistance {
     ChickenDistance(int n, int m) {
         this.n = n;
         this.m = m;
-        map = new int[n + 1][n + 1];    
     }
     
     void setMap(int row, int col, int value) {
-        map[row][col] = value;
-        
         if (value == 1) homes.add(new Point(row, col)); // 1이라면 집에 추가
         else if (value == 2) chickens.add(new Point(row, col)); // 2라면 치킨집 추가
     }
