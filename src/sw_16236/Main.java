@@ -1,4 +1,4 @@
-package sw_16236;// 백트래킹
+package sw_16236;
 
 import java.util.*;
 import java.io.*;
