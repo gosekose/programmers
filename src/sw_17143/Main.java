@@ -17,14 +17,12 @@ public class Main {
         
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
-
             fishing.setMap(parseInt(st.nextToken()), parseInt(st.nextToken())
                     ,parseInt(st.nextToken()), parseInt(st.nextToken())
                     ,parseInt(st.nextToken()));
         }
         
         fishing.start();
-        
         System.out.println(fishing.getAmount());
     }
 }
@@ -42,9 +40,8 @@ class Fishing {
         this.m = m;
         map = new Shark[2][n + 1][m + 2];
     }
-    
-    // row = 1, col = 1 부터 시작
-    void setMap(int row, int col, int speed, int dir, int size) {
+
+    void setMap(int row, int col, int speed, int dir, int size) { // row = 1, col = 1 부터 시작
         Shark shark = new Shark(row, col, speed, dir, size);
         map[0][row][col] = shark;
         sharks.add(shark);
@@ -78,7 +75,6 @@ class Fishing {
                     }
                 }
             }
-
         }
     }
     
@@ -94,10 +90,8 @@ class Fishing {
 
         if (dir == 1 || dir == 2) { // 위로 이동이므로 row를 -- 아래로 이동은 row++
             while (remain > 0) { // 남아 있는 양
-
                 if (nextRow == 1 && dir == 1) dir = 2;
                 else if (nextRow == n && dir == 2) dir = 1;
-
                 if (dir == 1) nextRow--;
                 else nextRow++;
                 remain--; // 남은 것 감소시키기
@@ -106,10 +100,8 @@ class Fishing {
 
         else if (dir == 3 || dir == 4) {
             while (remain > 0) { // 남아 있는 양
-
                 if (nextCol == 1 && dir == 4) dir = 3;
                 else if (nextCol == m && dir == 3) dir = 4;
-
                 if (dir == 3) nextCol++;
                 else nextCol--;
                 remain--; // 남은 것 감소시키기
@@ -146,6 +138,4 @@ class Fishing {
             this.size = size;
         }
     }
-
 }
-
