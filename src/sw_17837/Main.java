@@ -132,6 +132,7 @@ class Game {
         for (int i = 0; i < idx; i++) {
             horseMap[row][col].remove(0);
         }
+
     }
     
     void setRed(Horse h, int nextR, int nextC) {
