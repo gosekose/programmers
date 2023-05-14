@@ -37,8 +37,8 @@ class Sticker {
 
     void setInit(int n) {
         this.n = n;
-        dp = new int[2][n + 1];
-        map = new int[2][n + 1];
+        dp = new int[2][n + 1]; // dp를 담을 2차원 배열
+        map = new int[2][n + 1]; // 각 스티커의 값
     }
     
     void setMap(int row, int col, int value) {
@@ -46,7 +46,7 @@ class Sticker {
     }
     
     void run() {
-        dp[0][1] = map[0][1];
+        dp[0][1] = map[0][1]; // i가 2부터이므로 1을 초기화
         dp[1][1] = map[1][1];
         
         for (int i = 2; i <= n; i++) {
