@@ -79,7 +79,7 @@ class ArrayCalculation {
 
                     int idx = 1;
                     for (Point p : sortList) {
-                        if (idx > 101) break;
+                        if (idx >= 101) break;
                         map[row][idx] = p.num; // 먼저 1번 인덱스 수
                         map[row][++idx] = p.cnt; // 그 다음 인덱스로 cnt
                         idx++; // idx 증가시키기
