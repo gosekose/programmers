@@ -23,8 +23,8 @@ public class Main {
 
 class Jump {
     int n;
-    int[][] map;
-    long[][] dp;
+    int[][] map; // 점프 값 저장
+    long[][] dp; // 점프 후 dp 저장 2^63 - 1까지 저장 될 수 있으므로
     
     Jump (int n) {
         this.n = n;
@@ -43,13 +43,13 @@ class Jump {
             for (int col = 0; col < n; col++) {
 
                 int d = map[row][col];
-                if (d == 0) continue;
+                if (d == 0) continue; // 만약 이동 거리가 0이라면 중복 저장을 막기 위함 dp[row][col + 0] += dp[row][col] 방지
 
-                if (isValid(row, col + d)) {
+                if (isValid(row, col + d)) { // 값만큼 열 점프
                     dp[row][col + d] += dp[row][col];
                 }
 
-                if (isValid(row + d, col)) {
+                if (isValid(row + d, col)) { // 값만큼 행 점프
                     dp[row + d][col] += dp[row][col];
                 }
             }
