@@ -26,8 +26,8 @@ public class Main {
 
 class Box {
     int n;
-    int[] map;
-    int[] dp;
+    int[] map; // 값 저장
+    int[] dp; // 최대 몇개를 넣을 수 있는지 저장하는 DP
     int result;
     public Box(int n) {
         this.n = n;
@@ -47,12 +47,12 @@ class Box {
         dp[0] = 1; // 첫 번째 선택은 1
 
         for (int i = 1; i < n; i++) {
-            for (int j = i; j >= 0; j--) {
-                if (map[j] < map[i]) {
-                    dp[i] = Math.max(dp[j], dp[i]);
+            for (int j = i - 1; j >= 0; j--) {
+                if (map[j] < map[i]) { // 만약 현재 있는 상자의 값보다 적다면
+                    dp[i] = Math.max(dp[j], dp[i]); // 그 적은 상자와 현재 dp를 비교하여 업데이트
                 }
             }
-            dp[i] += 1;
+            dp[i] += 1; // 자기 자신을 넣어야 하므로 +1
             result = Math.max(dp[i], result);
         }
     }
