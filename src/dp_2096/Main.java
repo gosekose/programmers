@@ -12,7 +12,7 @@ public class Main {
         int n = parseInt(br.readLine());
         int[][] map = new int[n][3];
         
-        int[][][] dp = new int[n][3][2];
+        int[][][] dp = new int[n][3][2]; // 최대, 최소 저장
         
         for (int row = 0; row < n; row++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -21,15 +21,17 @@ public class Main {
             }
         }
         
-        dp[0][0][0] = dp[0][0][1] = map[0][0];
+        dp[0][0][0] = dp[0][0][1] = map[0][0]; // 초기화는 map에 있는 값으로 설정
         dp[0][1][0] = dp[0][1][1] = map[0][1];
         dp[0][2][0] = dp[0][2][1] = map[0][2];
         
-        for (int row = 1; row < n; row++) {
+        for (int row = 1; row < n; row++) { // 왼쪽은 왼, 중앙 / 중앙은 왼, 중, 오 / 오른쪽은 중, 오 순서로 dp 진행
+            // 최대
             dp[row][0][0] = Math.max(dp[row - 1][0][0], dp[row - 1][1][0]) + map[row][0];
             dp[row][1][0] = Math.max(Math.max(dp[row - 1][0][0], dp[row - 1][1][0]), dp[row - 1][2][0]) + map[row][1];
             dp[row][2][0] = Math.max(dp[row - 1][1][0], dp[row - 1][2][0]) + map[row][2];
-        
+
+            // 최소
             dp[row][0][1] = Math.min(dp[row - 1][0][1], dp[row - 1][1][1]) + map[row][0];
             dp[row][1][1] = Math.min(Math.min(dp[row - 1][0][1], dp[row - 1][1][1]), dp[row - 1][2][1]) + map[row][1];
             dp[row][2][1] = Math.min(dp[row - 1][1][1], dp[row - 1][2][1]) + map[row][2];    
