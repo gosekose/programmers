@@ -21,17 +21,17 @@ public class Main {
         
         for (int i = 0; i < q; i++) graph.addQuery(parseInt(br.readLine()));
         
-        graph.makeSubTree(r);
-        graph.getPrint();
+        graph.makeSubTree(r); // 서브 트리 만들며 dp 저장
+        graph.getPrint(); // 결과 출력
     }
 }
 
 class Graph {
-    int n;
-    int root;
-    Node[] nodes;
-    List<Integer> querys = new ArrayList<>();
-    int[] dp;
+    int n; // n개의 노드
+    int root; // 루트 노드
+    Node[] nodes; // 노드 저장
+    List<Integer> querys = new ArrayList<>(); // 출력해야하는 쿼리
+    int[] dp; // 서브 트리 개수
     
     Graph (int n, int root) {
         this.n = n;
@@ -44,7 +44,7 @@ class Graph {
     
     class Node {
         int x;
-        List<Node> adjacent = new ArrayList<>();
+        List<Node> adjacent = new ArrayList<>(); // 인접 노드
         
         Node (int x) {
             this.x = x;
@@ -65,12 +65,12 @@ class Graph {
     
     void makeSubTree(int root) {
         dp[root] = 1; // 서브 트리에 포함
-        Node node = nodes[root];
+        Node node = nodes[root]; // 노드 꺼낸 후
         
         for (Node ad : node.adjacent) {
-            if (dp[ad.x] == 0) { // 처음 호출 되는 경우 --> dp == 0
-                makeSubTree(ad.x);
-                dp[root] += dp[ad.x];
+            if (dp[ad.x] == 0) { // 처음 호출 되는 경우만 재귀적 실행  --> dp == 0
+                makeSubTree(ad.x); // 인접한 노드 여기서는 자식 노드를 의미
+                dp[root] += dp[ad.x]; // 자식 노드의 서브트리를 더함
             }
         }
     }
