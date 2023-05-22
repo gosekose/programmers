@@ -44,13 +44,13 @@ class PartialSum {
         int length = 0;
         int sum = 0;
         int left = 0;
-        int right = 0; // n 10 이상이므로 1 인덱스 이상무
+        int right = 0;
 
         while (left <= n && right <= n) {
             if (sum < target) { // 타겟이 더 큰 경우
-                sum += map[right++];
+                sum += map[right++]; // 값을 더한 후, 오른쪽 포인터 한 칸 증가
             } else {
-                sum -= map[left++];
+                sum -= map[left++]; // 현재 있는 값 빼고 왼쪽 포인터 한 칸 증가
                 length = right - left + 1;
                 result = Math.min(length, result);
             }

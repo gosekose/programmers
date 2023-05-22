@@ -85,6 +85,7 @@ class Graph {
                 now.tree.add(child); // 트리에 추가
                 buildTree(child, now); // 재귀 호출
             }
+
         }
     }
     
